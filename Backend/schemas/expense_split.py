@@ -35,21 +35,6 @@ class ExpenseUpdate(BaseModel):
     amount: Optional[Decimal] = None
 
 
-class ExpensePaid(BaseModel):
-    id: UUID
-    group_id: UUID
-    paid_by: UUID
-    title: str
-    amount: Decimal
-
-
-class ExpenseOwe(BaseModel):
-    id: UUID
-    expense_id: UUID
-    owed: UUID
-    amount: Decimal
-
-
 class ExpenseSplitResponse(BaseModel):
     id: UUID
     expense_id: UUID

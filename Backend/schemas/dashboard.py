@@ -1,15 +1,20 @@
+from decimal import Decimal
+
 from pydantic import BaseModel
 
-from schemas.expense_split import ExpenseResponse
+from schemas.expense_split import ExpenseOweResponse, ExpensePaidResponse
 from schemas.groups import GroupResponse
 from schemas.user import UserResponse
 
 
-class GroupDashBoardResponse(BaseModel):
-    group: GroupResponse
-    expense: list[ExpenseResponse]
+class ExpenseDashboardResponse(BaseModel):
+    paid_by: list[ExpensePaidResponse]
+    owed: list[ExpenseOweResponse]
 
 
-class DashBoard(BaseModel):
+class DashboardResponse(BaseModel):
     user: UserResponse
-    groups: list[GroupDashBoardResponse]
+    groups: list[GroupResponse]
+    expenses: list[ExpenseDashboardResponse]
+    total_expense: Decimal
+    total_owed: Decimal
